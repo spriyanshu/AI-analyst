@@ -20,7 +20,7 @@ services:
       - '--storage.tsdb.retention.time=30d'
     volumes:
       - ./prometheus_data:/prometheus
-      - ./AI-analyst/src/config/prometheus.yaml:/etc/prometheus/prometheus.yml
+      - ./src/config/prometheus.yaml:/etc/prometheus/prometheus.yml
 
   otel-collector:
     image: otel/opentelemetry-collector:latest
@@ -34,7 +34,7 @@ services:
       - '4317:4317'
       - '55679:55679'
     volumes:
-      - ./AI-analyst/src/config/otel-collector-config.yaml:/etc/otel/config.yaml # Mount your configuration file
+      - ./src/config/otel-collector-config.yaml:/etc/otel/config.yaml # Mount your configuration file
     depends_on:
       - jaeger
     networks:
@@ -42,7 +42,6 @@ services:
 
   app:
     build:
-      context: ./AI-analyst
       dockerfile: Dockerfile
     container_name: nest-app
     env_file:
@@ -55,7 +54,7 @@ services:
     depends_on:
       - otel-collector
     volumes:
-      - ./AI-analyst/src:/app/src
+      - ./src:/app/src
     networks:
       - demo-network
 

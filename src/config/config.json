@@ -14,7 +14,7 @@
         "Clear, personalized call-to-action"
       ],
       "focusAreas": {
-        "description": "Customizable areas of concentration",
+        "description": "Customizable areas of concentration. strictly follow the responseFormats remember i don't want string i want the json file that can direct pars",
         "examples": [
           "Technology Innovation",
           "Digital Transformation",
@@ -43,7 +43,7 @@
         "Avoid overwhelming the recipient with excessive information."
       ],
       "focusAreas": {
-        "description": "The focus should be on addressing the lead’s immediate challenges and aligning the message with their technological needs, values, and goals.",
+        "description": "The focus should be on addressing the lead’s immediate challenges and aligning the message with their technological needs, values, and goals.strictly follow the responseFormats remember i don't want string i want the json file that can direct pars",
         "examples": [
           "Reference the lead's recent challenges or goals (e.g., 'I understand you're working on scaling operations while ensuring compliance with regulations').",
           "Highlight how your solution aligns with their needs (e.g., 'We specialize in secure data storage tailored for healthcare organizations').",

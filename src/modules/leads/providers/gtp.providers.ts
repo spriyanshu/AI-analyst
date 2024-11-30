@@ -185,7 +185,7 @@ export class ChatGptProvider implements ApiProvider {
   private createResponse(content: string, type: string) {
     return {
       responseFormat: {
-        content,
+        content: parse(content),
         type,
         metadata: {
           source: 'ChatGptProvider',
