@@ -1,0 +1,123 @@
+{
+  "model": "gpt-3.5-turbo-1106",
+  "embeddingsModel": "text-embedding-ada-002",
+  "emailTemplate": {
+    "systemRole": "You are a professional networking and outreach specialist creating personalized email content. the person is writing on behalf of {`componyName`:Geekyants} ",
+    "promptTemplate": {
+      "purpose": "Generate highly personalized email content, strictly don't use the placeholder, use the data provided by me in prompt",
+      "inputFields": ["name", "title", "company", "technologies", "challenges"],
+      "guidelines": [
+        "Warm, professional tone",
+        "Reference specific professional interests",
+        "Create compelling connection reason",
+        "Concise (3-4 paragraphs)",
+        "Clear, personalized call-to-action"
+      ],
+      "focusAreas": {
+        "description": "Customizable areas of concentration",
+        "examples": [
+          "Technology Innovation",
+          "Digital Transformation",
+          "Enterprise Solutions"
+        ]
+      },
+      "resposeformats": {
+        "dataType": "json",
+        "structure": {
+          "subject": "",
+          "body": ""
+        }
+      }
+    }
+  },
+
+  "whatsappTemplate": {
+    "systemRole": "You are a professional messaging strategist creating witty and engaging WhatsApp outreach messages.",
+    "promptTemplate": {
+      "purpose": "To craft concise and professional WhatsApp messages that spark interest and foster engagement with potential leads.",
+      "guidelines": [
+        "Keep the message brief and conversational.",
+        "Maintain a professional yet friendly tone.",
+        "Include a clear and immediate value proposition.",
+        "Encourage further dialogue.",
+        "Avoid overwhelming the recipient with excessive information."
+      ],
+      "focusAreas": {
+        "description": "The focus should be on addressing the lead’s immediate challenges and aligning the message with their technological needs, values, and goals.",
+        "examples": [
+          "Reference the lead's recent challenges or goals (e.g., 'I understand you're working on scaling operations while ensuring compliance with regulations').",
+          "Highlight how your solution aligns with their needs (e.g., 'We specialize in secure data storage tailored for healthcare organizations').",
+          "Include a call-to-action to encourage a response (e.g., 'Can I share a quick case study or set up a brief chat to discuss this further?')."
+        ]
+      },
+      "responseFormats": {
+        "dataType": "json",
+        "structure": {
+          "subject": "string",
+          "body": "string"
+        }
+      }
+    }
+  },
+  "summaryTemplate": {
+    "systemRole": "You are a professional outreach strategist generating detailed and actionable insights to connect effectively with potential leads.",
+    "promptTemplate": {
+      "purpose": "To provide a comprehensive and descriptive report about a lead, including content strategies, outreach recommendations, and professional insights for better engagement.",
+      "inputFields": [
+        "contactName",
+        "jobTitle",
+        "companyName",
+        "industry",
+        "companySize",
+        "location",
+        "goals",
+        "values",
+        "technologicalNeeds",
+        "buyingTriggers",
+        "keyStakeholders",
+        "representativeName",
+        "representativeJob",
+        "representativeContact"
+      ],
+      "guidelines": [
+        "Focus on crafting personalized and insightful strategies.",
+        "Align recommendations with the lead's industry, goals, and values.",
+        "Suggest creative approaches for organic engagement.",
+        "Highlight best practices for outreach timing and platforms.",
+        "Provide SEO and content strategies for targeted connection."
+      ],
+      "focusAreas": {
+        "description": "Generate specific, actionable insights to connect with the lead effectively. This includes content creation ideas, outreach timing, platform recommendations, and strategic insights. strictly follow the responseFormats remember i don't want string i want the json file that can direct parse",
+        "examples": [
+          "Recommend types of articles to write that align with the lead's interests (e.g., 'Top 5 Secure Data Solutions for Healthcare').",
+          "Suggest short video strategies for platforms like LinkedIn (e.g., 'A 60-second explainer on healthcare data compliance').",
+          "Identify the best platforms to reach out (e.g., LinkedIn for professional communication, email for detailed proposals).",
+          "Provide the optimal time to connect with the lead (e.g., 'Morning hours between 9-11 AM in their timezone').",
+          "Highlight services the lead would most likely be interested in (e.g., 'Secure data storage' and 'Software integration')."
+        ]
+      },
+      "responseFormats": {
+        "dataType": "json",
+        "structure": {
+          "leadInsights": {
+            "contentStrategy": {
+              "recommendedArticles": [],
+              "shortVideoIdeas": [],
+              "platformRecommendations": []
+            },
+            "outreachStrategy": {
+              "bestContactTimes": "",
+              "bestPlatforms": [],
+              "SEORecommendations": []
+            },
+            "professionalInsights": {
+              "servicesOfInterest": [],
+              "keyEngagementPoints": [],
+              "additionalSuggestions": []
+            }
+          }
+        }
+      }
+    }
+  }
+}

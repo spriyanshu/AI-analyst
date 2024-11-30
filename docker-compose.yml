@@ -1,0 +1,64 @@
+version: '3.5'
+
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - '16686:16686'
+      - '14268:14268'
+      - '14250:14250'
+    networks:
+      - demo-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - '9090:9090'
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    volumes:
+      - ./prometheus_data:/prometheus
+      - ./AI-analyst/src/config/prometheus.yaml:/etc/prometheus/prometheus.yml
+
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    restart: always
+    command: ['--config=/etc/otel/config.yaml']
+    ports:
+      - '1888:1888'
+      - '8888:8888'
+      - '8889:8889'
+      - '13133:13133'
+      - '4317:4317'
+      - '55679:55679'
+    volumes:
+      - ./AI-analyst/src/config/otel-collector-config.yaml:/etc/otel/config.yaml # Mount your configuration file
+    depends_on:
+      - jaeger
+    networks:
+      - demo-network
+
+  app:
+    build:
+      context: ./AI-analyst
+      dockerfile: Dockerfile
+    container_name: nest-app
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - otel-collector
+    volumes:
+      - ./AI-analyst/src:/app/src
+    networks:
+      - demo-network
+
+networks:
+  demo-network:
+    driver: bridge
