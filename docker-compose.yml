@@ -1,45 +1,6 @@
-version: '3.7'
+version: '3.8'
 
 services:
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    ports:
-      - '16686:16686'
-      - '4318:4318'
-      - '4317:4317'
-    environment:
-      - LOG_LEVEL=debug
-    networks:
-      - demo-network
-
-  # prometheus:
-  #   image: prom/prometheus:latest
-  #   ports:
-  #     - '9090:9090'
-  #   volumes:
-  #     - ./src/config/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   networks:
-  #     - demo-network
-
-  otel-collector:
-    image: otel/opentelemetry-collector:latest
-    restart: always
-    command: ['--config=/etc/otel/config.yaml', '']
-    ports:
-      - '1888:1888'
-      - '8888:8888'
-      - '8889:8889'
-      - '13133:13133'
-      - '4317:4317'
-      - '4318:4318'
-      - '55679:55679'
-    volumes:
-      - ./src/config/otel-collector-config.yaml:/etc/otel/config.yaml
-    depends_on:
-      - jaeger
-    networks:
-      - demo-network
-
   app:
     build:
       dockerfile: Dockerfile
@@ -52,8 +13,6 @@ services:
       - PORT=${PORT}
     ports:
       - '3000:3000' # Application Port
-    depends_on:
-      - otel-collector
     volumes:
       - ./src:/app/src
     networks:
