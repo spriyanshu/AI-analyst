@@ -101,19 +101,19 @@
         "structure": {
           "leadInsights": {
             "contentStrategy": {
-              "recommendedArticles": [],
-              "shortVideoIdeas": [],
-              "platformRecommendations": []
+              "recommendedArticles": ["string"],
+              "shortVideoIdeas": ["string"],
+              "platformRecommendations": ["string"]
             },
             "outreachStrategy": {
               "bestContactTimes": "",
-              "bestPlatforms": [],
-              "SEORecommendations": []
+              "bestPlatforms": ["string"],
+              "SEORecommendations": ["string"]
             },
             "professionalInsights": {
-              "servicesOfInterest": [],
-              "keyEngagementPoints": [],
-              "additionalSuggestions": []
+              "servicesOfInterest": ["string"],
+              "keyEngagementPoints": ["string"],
+              "additionalSuggestions": ["string"]
             },
             "leadeValidationReview": {
               "score": "",
