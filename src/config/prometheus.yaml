@@ -1,5 +1,5 @@
 scrape_configs:
-  - job_name: tyfoneService
+  - job_name: nest-app
     scrape_interval: 5s
     static_configs:
       - targets: [host.docker.internal:8888]

@@ -1,7 +1,8 @@
 receivers:
   otlp:
     protocols:
-      grpc:
+      grpc: # Keep gRPC for compatibility
+      http: # Added HTTP for OTLP on 4318
 
 exporters:
   prometheus:
@@ -12,7 +13,7 @@ exporters:
   debug:
 
   otlp:
-    endpoint: jaeger:4317
+    endpoint: jaeger:4318 # Updated endpoint to match HTTP protocol
     tls:
       insecure: true
 

@@ -4,7 +4,10 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import 'dotenv/config';
 
+import tracer from './config/opentelemetry';
 async function bootstrap() {
+  // Start SDK before nestjs factory create
+  await tracer.start();
   const app = await NestFactory.create(AppModule);
 
   // Swagger configuration

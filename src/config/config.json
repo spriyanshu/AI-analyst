@@ -114,6 +114,10 @@
               "servicesOfInterest": [],
               "keyEngagementPoints": [],
               "additionalSuggestions": []
+            },
+            "leadeValidationReview": {
+              "score": "",
+              "summery": ""
             }
           }
         }
